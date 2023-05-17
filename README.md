@@ -26,7 +26,8 @@ Building is simply a matter of changing to the cpm3 directory and running 'make'
 
 ### Notes
 
-* You may see a 'corrupt FCB' error assicated with two of the files during the build process (save.com and help.hlp). Per the original README file, this is caused by the GENCOM utility attempting to close a file that it didn't actually open, and is normal (I've confirmed that both files are fine).
+* You may see a 'corrupt FCB' error associated with two of the files during the build process (save.com and help.hlp). Per the original README file, this is caused by the GENCOM utility attempting to close a file that it didn't actually open, and is normal (I've confirmed that both files are fine).
+* The original source README indicates that the INITDIR transient command is missing. I added the assembled command binary to this repository.
 * The build process has been tested on Ubuntu 20.04.
 
 
