@@ -6,7 +6,7 @@ OBJS=mcd80a.obj mcd80f.obj parse.obj
 HEXS=copysys.hex ccp3.hex ccpdate.hex date.hex device.hex dir.hex \
 	dump.hex ed.hex erase.hex get.hex gencom.hex gencpm.hex help.hex \
 	hexcom.hex patch.hex pip.hex put.hex rename.hex set.hex setdef.hex \
-	show.hex submit.hex type.hex minhlp.hex
+	show.hex submit.hex type.hex minhlp.hex prs0mov.hex
 
 OBJS=copysys.obj ccp3.obj ccpdate.obj date.obj device.obj dir.obj \
 	dump.obj ed.obj erase.obj get.obj gencom.obj gencpm.obj help.obj \
@@ -18,8 +18,8 @@ BLKS=date device dir disp dpb80 ed erase gencom gencpm get hexcom hexpat \
 	submit timest type util
 
 MCOMS = copysys.com ccp.com date.com device.com dir.com dump.com ed.com \
-       erase.com get.com gencom.com gencpm.com help.com hexcom.com patch.com \
-       pip.com put.com rename.com save.com set.com setdef.com show.com \
+       erase.com get.com gencom.com gencpm.com minhlp.com help.com hexcom.com \
+       patch.com pip.com put.com rename.com save.com set.com setdef.com show.com \
        submit.com type.com sid.com
 
 BDOS = resbdos3.spr bdos3.spr bnkbdos3.spr
@@ -317,4 +317,4 @@ prs2mon.rel:    prs2mon.asm
 #
 clean:
 	rm -f $(MCOMS) $(HEXS) $(BLKS) *.lst *.rel *.sym *.tra *.rsx *.spr \
-	*.mod *.obj loader*.tmp help.hlp
+	*.mod *.obj *.prl loader*.tmp help.hlp
