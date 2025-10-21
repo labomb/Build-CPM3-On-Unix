@@ -20,7 +20,7 @@ BLKS=date device dir disp dpb80 ed erase gencom gencpm get hexcom hexpat \
 MCOMS = copysys.com ccp.com date.com device.com dir.com dump.com ed.com \
        erase.com get.com gencom.com gencpm.com minhlp.com help.com hexcom.com \
        patch.com pip.com put.com rename.com save.com set.com setdef.com show.com \
-       submit.com type.com sid.com
+       submit.com type.com sid.com initdir.com
 
 BDOS = resbdos3.spr bdos3.spr bnkbdos3.spr
 
@@ -30,19 +30,20 @@ THAMES = ./runthames
 MAC=mac.com
 RMAC=rmac.com
 LINK=drlink.com
+PLI=pli.com
 
 BINARIES= bdos3.spr     date.com	  erase.com   help.hlp	  README \
 	setdef.com bnkbdos3.spr  device.com  gencom.com  hexcom.com  \
 	rename.com	show.com ccp.com       dir.com	  gencpm.com  \
 	patch.com   resbdos3.spr	submit.com copysys.com   dump.com \
 	get.com     pip.com	 save.com	type.com cpmldr.rel    \
-	ed.com	  help.com    put.com	  set.com sid.com
+	ed.com	  help.com    put.com	  set.com sid.com	initdir.com
 
 SOURCES= assemble.txt  disp.plm	    hexcom.asm	  parse.asm	search.plm \
 	bdos30.asm    dpb80.plm     hexcom.c	  patch.asm	setbuf.plm \
 	bios.bin      dpb.lit	    hexpat.c	  pip.plm	setdef.plm \
 	bioskrnl.asm  drvtbl.asm    inpout.asm	  plibios3.asm	set.plm \
-	boot.asm      dump.asm	    ldrlwr.asm	  plibios.asm	show.plm \
+	boot.asm      dump.asm	    initdir.pli	ldrlwr.asm	  show.plm \
 	callvers.asm  echovers.asm  _libios3.asm  plidio.asm	sopt.dcl \
 	ccp3.asm      ed.plm	    _lidio.asm	  prs0mov.asm	sopt.inc \
 	ccp3org.asm   		    drlink.com	  prs1asm.asm	sort.plm \
@@ -149,6 +150,9 @@ get.com:	get.hex getrsx.rsx gencom.com hexcom
 get.rsx:	getrsx.rel
 	$(ZXCC) $(LINK) getrsx +-[OP]
 	mv -f getrsx.prl $@
+
+initdir.com:	initdir.rel mcd80d.rel plidio.rel plibios3.rel
+	$(ZXCC) $(LINK) initdir=mcd80d,initdir,plidio,plibios3[a]
 
 pip.mod:	pip.obj mcd80f.obj inpout.obj
 	$(THAMES) :F3:link mcd80f.obj,inpout.obj,$<,:F1:plm80.lib to $@
@@ -311,6 +315,9 @@ prs2mon.rel:    prs2mon.asm
 
 %.rel:	%.asm
 	$(ZXCC) $(RMAC) `basename $< .asm`
+
+%.rel:	%.pli
+	$(ZXCC) $(PLI) `basename $< .pli` $$dl
 
 #
 # 

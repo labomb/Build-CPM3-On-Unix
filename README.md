@@ -9,8 +9,8 @@ The CP/M system components and transient commands are all built using original D
 
 You will need to download and build the following two packages:
 
-* ZXCC, found [here](http://www.seasip.info/Unix/Zxcc/zxcc-0.5.7.tar.gz)
-* Thames, found [here](http://www.seasip.info/Unix/Thames/thames-0.1.1.tar.gz)
+* ZXCC, found [here](http://www.seasip.info/Unix/Zxcc/index.html)
+* Thames, found [here](http://www.seasip.info/Unix/Thames/index.html)
 
 ZXCC is a neat utility that can run native CP/M commands on the Unix platform. Thames is an Intel ISIS-II emulator. This environment was used by Digital Research at the time CP/M was developed, specifically to build the original PLM source files using tools such as PLM80 and ASM80. I was able to build both of these packages without issue on my system.
 
@@ -27,7 +27,9 @@ Building is simply a matter of changing to the cpm3 directory and running 'make'
 ### Notes
 
 * You may see a 'corrupt FCB' error associated with two of the files during the build process (save.com and help.hlp). Per the original README file, this is caused by the GENCOM utility attempting to close a file that it didn't actually open, and is normal (I've confirmed that both of the files produced are fine).
-* The original source README indicates that the INITDIR transient command is missing. I added the compiled command binary to this repository.
+* The original source README indicates that the INITDIR transient command is missing. This respository includes the INITDIR source along with it's dependency sources, as well as the PL/I tools and Makefile modifications required to build the INITDIR command.
+
+  Should you wish to use the INITDIR command in your CP/M enviroment, you should consider applying the two offical patches that DRI released for that command. The details of the patches are provided in the `initdir.pat` file included in this repository.
 * The build process has been tested on Ubuntu 20.04.
 
 
