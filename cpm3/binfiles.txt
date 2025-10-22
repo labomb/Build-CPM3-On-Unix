@@ -1,0 +1,42 @@
+CP/M 3
+======
+
+  This archive contains an almost complete build of CP/M 3.
+
+
+Differences from Digital Research CP/M 3
+========================================
+
+  All the CP/M 3 patches that DRI released have been applied to the
+source code, except those to INITDIR. Patches 1-18 (except numbers 5
+and 9) were applied. See INITDIR note below re. patches 5 and 9.
+
+  CP/M 3 is now fully Year 2000 compliant. This affects the programs 
+DATE.COM, DIR.COM and SHOW.COM.
+
+  Dates can be displayed in US, UK or Year-Month-Day format. This is set by 
+SETDEF:
+
+      SETDEF [US]
+      SETDEF [UK]
+      SETDEF [YMD]  respectively.
+  
+  The CCP has a further bug fix: A command sequence such as:
+
+  C1
+  :C2
+  :C3
+
+  will now not execute the command C3 if the command C1 failed.
+
+
+INITDIR
+===============
+
+  DRI (or Caldera) never released source level patches for INITDIR.COM.
+However, two binary patches were released... patch #5 and patch #9. The
+initdir.pat file included with this distribution provides details about
+each of these patches and how to apply them.
+
+  Should you wish to use the INITDIR command in your CP/M environment, you
+should consider applying both of these patches to the binary beforehand.

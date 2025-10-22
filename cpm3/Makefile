@@ -2,7 +2,7 @@
 # Unix Makefile for CP/M 3.1
 #
 OBJS=mcd80a.obj mcd80f.obj parse.obj
-#
+
 HEXS=copysys.hex ccp3.hex ccpdate.hex date.hex device.hex dir.hex \
 	dump.hex ed.hex erase.hex get.hex gencom.hex gencpm.hex help.hex \
 	hexcom.hex patch.hex pip.hex put.hex rename.hex set.hex setdef.hex \
@@ -17,61 +17,70 @@ BLKS=date device dir disp dpb80 ed erase gencom gencpm get hexcom hexpat \
 	help main80 minhlp pip put rename scan search set setdef show sort \
 	submit timest type util
 
-MCOMS = copysys.com ccp.com date.com device.com dir.com dump.com ed.com \
-       erase.com get.com gencom.com gencpm.com minhlp.com help.com hexcom.com \
-       patch.com pip.com put.com rename.com save.com set.com setdef.com show.com \
-       submit.com type.com sid.com initdir.com
+MCOMS=copysys.com ccp.com date.com device.com dir.com dump.com ed.com \
+	erase.com get.com gencom.com gencpm.com minhlp.com help.com hexcom.com \
+	patch.com pip.com put.com rename.com save.com set.com setdef.com show.com \
+	submit.com type.com sid.com initdir.com
 
-BDOS = resbdos3.spr bdos3.spr bnkbdos3.spr
+BDOS=resbdos3.spr bdos3.spr bnkbdos3.spr
 
-ZXCC = zxcc
-THAMES = ./runthames
+# Unix tools
+ZXCC=zxcc
+THAMES=./runthames
 
+# CP/M tools
 MAC=mac.com
 RMAC=rmac.com
 LINK=drlink.com
 PLI=pli.com
 
-BINARIES= bdos3.spr     date.com	  erase.com   help.hlp	  README \
-	setdef.com bnkbdos3.spr  device.com  gencom.com  hexcom.com  \
-	rename.com	show.com ccp.com       dir.com	  gencpm.com  \
-	patch.com   resbdos3.spr	submit.com copysys.com   dump.com \
-	get.com     pip.com	 save.com	type.com cpmldr.rel    \
-	ed.com	  help.com    put.com	  set.com sid.com	initdir.com
+BINARIES= binfiles.txt  bdos3.spr  bnkbdos3.spr  ccp.com    copysys.com   cpmldr.rel \
+	date.com    device.com   dir.com      dump.com    ed.com        erase.com \
+	gencom.com  gencpm.com   get.com      help.com    help.hlp      hexcom.com \
+	hist.utl    initdir.com  initdir.pat  lib.com     link.com      mac.com \
+	patch.com   pip.com      put.com      rename.com  resbdos3.spr  rmac.com \
+	save.com    set.com      setdef.com   show.com    sid.com       submit.com \
+	trace.utl   type.com     xref.com     z80.lib
 
-SOURCES= assemble.txt  disp.plm	    hexcom.asm	  parse.asm	search.plm \
-	bdos30.asm    dpb80.plm     hexcom.c	  patch.asm	setbuf.plm \
-	bios.bin      dpb.lit	    hexpat.c	  pip.plm	setdef.plm \
-	bioskrnl.asm  drvtbl.asm    inpout.asm	  plibios3.asm	set.plm \
-	boot.asm      dump.asm	    initdir.pli	ldrlwr.asm	  show.plm \
-	callvers.asm  echovers.asm  _libios3.asm  plidio.asm	sopt.dcl \
-	ccp3.asm      ed.plm	    _lidio.asm	  prs0mov.asm	sopt.inc \
-	ccp3org.asm   		    drlink.com	  prs1asm.asm	sort.plm \
-	ccpdate.asm   erase.plm     loader3.asm   prs2mon.asm	submit.plm \
-	chario.asm    fcb.lit	    mac.com	  putf.asm	subrsx.asm \
-	comlit.lit    fd1797sd.asm  main80.plm	  put.plm	timest.plm \
-	conbdos.asm   finfo.lit     main.plm	  putrsx.asm	type.plm \
-	copyrt.lit    format.lit    makedate.lib  random.asm	_ump.asm \
-	copysys.asm   gencom.plm    Makefile	  README	util.plm \
-	cpmbdos1.asm  gencpm.plm    making.txt	  rename.plm	utl0mov.asm \
-	cpmbdos2.asm  getdef.plm    mcd80a.asm	  resbdos.asm	utl1hst.asm \
-	cpmldr.asm    getf.asm	    mcd80f.asm	  rmac.com	utl2trc.asm \
-	crdef.plm     get.plm	    minhlp.plm	  save.asm	vers.lit \
-	date.plm      getrsx.asm    mon.plm	  scan.lit	xfcb.lit \
-	datmod.asm    getrsx.lib    move.asm	  scan.plm \
-	device.plm    help.dat	    newpip.plm	  scb.asm \
-	dirlbl.asm    help.plm	    _opysys.asm   search.lit  runthames
+BLDTOOLS= bios.bin  drlink.com  mac.com     pli.com   pli0.ovl \
+	pli1.ovl  pli2.ovl    plilib.irl  rmac.com
 
+SOURCES= Makefile      README        _libios3.asm  _lidio.asm    _opysys.asm \
+	_ump.asm      assemble.txt  bdos30.asm    bioskrnl.asm  boot.asm \
+	callvers.asm  ccp3.asm      ccp3org.asm   ccpdate.asm   chario.asm \
+	comlit.lit    conbdos.asm   copyrt.lit    copysys.asm   cpmbdos1.asm \
+	cpmbdos2.asm  cpmldr.asm    crdef.plm     date.plm      datmod.asm \
+	device.plm    diomod.dcl    dirlbl.asm    disp.plm      dpb.lit \
+	dpb80.plm     drvtbl.asm    dump.asm      echovers.asm  ed.plm \
+	erase.plm     fcb.lit       fd1797sd.asm  finfo.lit     format.lit \
+	gencom.plm    gencpm.plm    get.plm       getdef.plm    getf.asm \
+	getrsx.asm    getrsx.lib    help.dat      help.plm      hexcom.asm \
+	hexcom.c      hexpat.c      initdir.pli   inpout.asm    ldrlwr.asm \
+	loader3.asm   main.plm      main80.plm    makedate.lib  making.txt \
+	mcd80a.asm    mcd80d.asm    mcd80f.asm    minhlp.plm    mon.plm \
+	move.asm      newpip.plm    parse.asm     patch.asm     pip.plm \
+	plibios.dcl   plibios3.asm  plidio.asm    prs0mov.asm   prs1asm.asm \
+	prs2mon.asm   put.plm       putf.asm      putrsx.asm    random.asm \
+	rename.plm    resbdos.asm   runthames     save.asm      scan.lit \
+	scan.plm      scb.asm       search.lit    search.plm    set.plm \
+	setbuf.plm    setdef.plm    show.plm      sopt.dcl      sopt.inc \
+	sort.plm      submit.plm    subrsx.asm    timest.plm    type.plm \
+	util.plm      utl0mov.asm   utl1hst.asm   utl2trc.asm   vers.lit \
+	xfcb.lit
 
 all:	$(MCOMS) $(BDOS) cpmldr.rel help.hlp
 
 zip:	cpm3src_unix.zip cpm3bin_unix.zip
 
-cpm3src_unix.zip:	$(SOURCES)
-	zip $@ $(SOURCES)
+cpm3src_unix.zip:	$(SOURCES) $(BLDTOOLS)
+	zip $@ $(SOURCES) $(BLDTOOLS)
 
 cpm3bin_unix.zip:	$(BINARIES)
 	zip $@ $(BINARIES)
+	@rm link.com
+
+link.com:	drlink.com
+	@cp $< $@
 
 ############################################################################
 #
@@ -317,7 +326,7 @@ prs2mon.rel:    prs2mon.asm
 	$(ZXCC) $(RMAC) `basename $< .asm`
 
 %.rel:	%.pli
-	$(ZXCC) $(PLI) `basename $< .pli` $$dl
+	$(ZXCC) $(PLI) `basename $< .pli` $dl
 
 #
 # 
